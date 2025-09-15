@@ -1,0 +1,126 @@
+@import url(css_reset.css);
+
+/* Cria um container em grid com 10 colunas*/
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+}
+
+header {
+    grid-column: span 10;
+    background-color: violet;
+    height: 50px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+aside {
+    grid-column: span 10;
+    background-color: green;
+
+    nav {
+        background-color: grey;
+        padding: 10px;
+        text-align: center;
+
+        h1 {
+            padding-bottom: 10px;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+    }
+}
+
+main {
+    grid-column: span 10;
+    background-color: greenyellow;
+    padding: 10px;
+
+    h1 {
+        text-align: center;
+    }
+
+    section {
+        grid-column: span 10;
+        background-color: orange;
+        margin: 20px 5px;
+        box-sizing: border-box;
+        padding: 10px;
+
+        h2 {
+            text-align: center;
+        }
+
+        img {
+            width: 50%;
+            margin: 5px;
+            float: left;
+            max-width: 100%;
+        }
+
+        p {
+            text-align: justify;
+            text-indent: 30px;
+        }
+    }
+}
+
+footer {
+    grid-column: span 10;
+    background-color: red;
+    text-align: center;
+    padding: 20px 10px;
+}
+
+/*CELULAR*/
+@media screen and (max-width: 600px) {
+    main {
+        background-color: pink;
+    }
+}
+
+/*TABLET*/
+@media only screen and (min-width: 600px) {
+    main {
+        background-color: blue;
+    }
+
+    main section {
+        grid-column: span 5;
+    }
+}
+
+/*DESKTOP*/
+@media only screen and (min-width: 768px) {
+    aside {
+        grid-column: span 3;
+        padding: 10px;
+
+        nav {
+            ul {
+                text-align: left;
+                display: block;
+
+                li {
+                    padding: 10px 0;
+                    border-bottom: 1px solid black;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+
+    main {
+        grid-column: span 7;
+        background-color: brown;
+
+        .grid-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+    }
+}
