@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta de Endereço por CEP</title>
+</head>
+<body>
+  <h1>Buscar Endereço</h1>
+
+  <label>CEP: </label>
+  <input type="text" id="cep" placeholder="Digite o CEP" maxlength="8">
+  <button id="buscarBtn" onclick="buscar()">Buscar</button>
+
+  <h2>Endereço</h2>
+  <p><strong>Logradouro:</strong> <span id="logradouro"></span></p>
+  <p><strong>Bairro:</strong> <span id="bairro"></span></p>
+  <p><strong>Cidade:</strong> <span id="cidade"></span></p>
+  <p><strong>Estado:</strong> <span id="uf"></span></p>
+
+  <script>
+    function buscarEndereco(cep) {
+      const url = `https://viacep.com.br/ws/${cep}/json/`;
+      return fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error("Erro ao buscar CEP!");
+          }
+          return response.json();
+        })
+        .then(data => {
+          if (data.erro) {
+            throw new Error("CEP não encontrado!");
+          }
+          return data;
+        });
+    }
+
+    function buscar(){
+      const cep = document.getElementById("cep").value;
+      if (cep.length !== 8) {
+        alert("Digite um CEP válido com 8 dígitos.");
+        return;
+      }
+      buscarEndereco(cep)
+        .then(data => {
+          document.getElementById("logradouro").innerHTML = data.logradouro;
+          document.getElementById("bairro").innerHTML = data.bairro;
+          document.getElementById("cidade").innerHTML = data.localidade;
+          document.getElementById("uf").innerHTML = data.uf;
+        })
+        .catch(error => {
+          alert(error.message);
+        });
+    };
+
+    document.getElementById("cep").addEventListener("keyup", (event)=>{
+        cep = document.getElementById("cep").value;
+        if(cep.length >= 8){
+            buscar();
+        }
+    })
+  </script>
+</body>
+</html>

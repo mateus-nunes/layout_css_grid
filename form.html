@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulários</title>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/scripts.js"></script>
+
+</head>
+<body>
+
+    
+    <a href="#" onclick="mensagem('Mensagem qualquer');">Clique aqui</a>
+
+    <br>
+
+    <form method="get" action="">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" placeholder="Informe um nome" maxlength="10" list="nomes">
+        <datalist id="nomes">
+            <option value="Mateus">Mateus</option>
+            <option value="Maria">Maria</option>
+        </datalist>
+        <br>
+        <label for="email">Email: </label>
+        <input type="email" name="email" value="email@mail.com" readonly>
+        <br>
+        <label for="valor">Valor: </label>
+        <input type="number" name="valor" min="0" max="100">
+        <br>
+        <label for="">Masculino</label>
+        <input type="radio" name="sexo" value="m">
+        <label for="">Feminino</label>
+        <input type="radio" name="sexo" value="f">
+        <br>
+        <label for="">Segunda</label>
+        <input type="checkbox" name="dias[]" value="2">
+        <label for="">terça</label>
+        <input type="checkbox" name="dias[]" value="3">
+        <label for="">quarta</label>
+        <input type="checkbox" name="dias[]" value="4">
+        <br>
+        <label for="">Curso</label>
+        <select name="curso" id="" required>
+            <option value="">Selecione um curso</option>
+            <option value="ADS">ADS</option>
+            <option value="PED">Pedagogia</option>
+            <option value="AGR">Agronomia</option>
+        </select>
+        <br>
+        <input type="submit" value="enviar">
+        
+    </form>
+    
+
+    
+    
+</body>
+</html>
